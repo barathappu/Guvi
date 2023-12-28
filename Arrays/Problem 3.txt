@@ -1,0 +1,39 @@
+Problem Statement
+-------------------
+A person saves his monthly saving according to given schema. He saves same amount of money which is equal to the money saved in immediate previous two months. Assume, initially he saved 1000 rupees and in first month he saved another 1000. Your task is to tell how much he had totally saved at the end of ‘n’ months
+
+Input Description:
+You will be given a number ‘n’->No. of months
+
+Output Description:
+Print the total savings at the end of ‘n’ months
+
+Sample Input :
+1
+Sample Output :
+2000
+-----------------------
+
+CODE
+------------
+public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = n+1;
+        int[] arr = {1000,1000};
+        int[] sar = new int[m];
+        int Sum = 0;
+        sc.close();
+        for(int i = 0; i<m; i++) {
+        	if(i<=(arr.length-1)) {
+        		sar[i] = arr[i];
+        	}
+        	else {
+        		sar[i]=sar[(i-1)%m]+sar[(i-2)%m];
+        	}
+        }
+        for(int i=0;i<sar.length;i++) {
+          	Sum = Sum + sar[i];        	
+        }
+        System.out.print(Sum);
+	}    

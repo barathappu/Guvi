@@ -1,0 +1,71 @@
+Problem Statement
+-------------------
+
+You are given with two arrays. Your task is to merge the array such that first array is in ascending order and second one in descending order.
+
+Input Description:
+First line contains two integer ‘n’ and ‘m’. ‘n’ denotes length of array 1 and ‘m’ of array 2.Next line contains n space separated numbers and third line contains ‘m’ space separated numbers
+
+Output Description:
+Print a single array in desired order
+
+Sample Input :
+3 3
+23 15 16
+357 65 10
+Sample Output :
+15 16 23 357 65 10
+------------------------------------
+
+
+
+CODE
+--------------
+public static void main(String[] args) {
+
+		    Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] ar1 = new int[n];
+        int[] ar2 = new int[m];
+        int[] ar3 = new int[n+m];
+        int temp = 0;
+        
+        for(int i = 0; i<n; i++) {
+        	ar1[i]=sc.nextInt();
+        } 
+        for(int i = 0; i<m; i++) {
+        	ar2[i]=sc.nextInt();
+        }
+		sc.close();
+		for (int i = 0; i < ar1.length; i++) {
+            for (int j = i+1; j < ar1.length; j++) {
+                if(ar1[i] > ar1[j]) {
+                    temp = ar1[i];
+                    ar1[i] = ar1[j];
+                    ar1[j] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < ar2.length; i++) {
+            for (int j = i+1; j < ar2.length; j++) {
+                if(ar2[i] < ar2[j]) {
+                    temp = ar2[i];
+                    ar2[i] = ar2[j];
+                    ar2[j] = temp;
+                }
+            }
+        }
+        System.arraycopy(ar1, 0, ar3, 0, n);
+        System.arraycopy(ar2, 0, ar3, n, m);
+        //System.out.println(Arrays.toString(ar3));
+       for (int i = 0; i < ar3.length; i++) {
+    	   if(i != (ar3.length - 1)) {
+            System.out.print(ar3[i] + " ");
+    	   }
+    	   else {
+    		   System.out.print(ar3[i]);
+    	   }
+        }
+       
+	}

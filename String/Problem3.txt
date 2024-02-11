@@ -1,0 +1,35 @@
+Problem Statement
+----------------------
+
+Given a string S, print it after changing the middle element to * (if the length of the string is even, change the 2 middle elements to *).
+Sample Testcase :
+INPUT
+hello
+OUTPUT
+he*lo
+
+---------------------
+
+CODE
+--------------------------------------------
+
+public class Main {
+    public static void main(String[] args) {
+		Scanner tt = new Scanner(System.in);
+		String a = tt.nextLine();
+		StringBuffer y = new StringBuffer();
+		y.append(a);
+		StringBuffer b = new StringBuffer();
+		int n = y.length();
+		int c = n/2;
+		if(n%2 == 0) {
+			//char x = a.charAt(c);
+			 b = y.replace(c-1, c, "*");
+			 b = y.replace(c, c+1, "*");
+			 
+		}else {
+			b=y.replace(c, c+1, "*");
+		}
+		System.out.println(b);
+    }
+}
